@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Beauty Parlour Website Package</title>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+  }
+  a {
+    text-decoration: none;
+  }
+  /* Custom colors */
+  :root {
+    --pink-gradient-start: #ec4899;
+    --pink-gradient-end: #f9a8d4;
+    --purple-gradient-start: #7c3aed;
+    --purple-gradient-end: #a78bfa;
+    --pink: #ec4899;
+    --purple: #7c3aed;
+    --soft-shadow: rgba(0,0,0,0.1);
+  }
+
+  /* Large hero styles */
+  .hero-section {
+    position: relative;
+    padding: 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #f9e5f9, #fff7fb);
+    overflow: hidden;
+  }
+  .hero-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    max-width: 800px;
+  }
+  .hero-subtitle {
+    font-size: 1.25rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 700px;
+  }
+  .btn-gradient {
+    background: linear-gradient(135deg, var(--pink-gradient-start), var(--pink-gradient-end));
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  .btn-gradient:hover {
+    background: linear-gradient(135deg, var(--pink-gradient-end), var(--pink-gradient-start));
+  }
+  /* Illustration placeholder */
+  .illustration {
+    width: 100%;
+    max-width: 500px;
+    height: 350px;
+    background: linear-gradient(135deg, #fbcfe8, #ffe4f0);
+    border-radius: 20px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 12px var(--soft-shadow);
+  }
+  /* Floating circles decoration */
+  .floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.2;
+    z-index: 0;
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  /* Statistics bar */
+  .stats-bar {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .stat-item {
+    background-color: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px var(--soft-shadow);
+    text-align: center;
+    min-width: 150px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .stat-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px var(--soft-shadow);
+  }
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--pink);
+  }
+  .section-spacing {
+    padding: 6rem 2rem;
+  }
+  /* About section */
+  .about-section {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .about-image {
+    flex: 1 1 45%;
+    height: 350px;
+    background: linear-gradient(135deg, #fbcfe8, #ffe4f0);
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .about-content {
+    flex: 1 1 45%;
+  }
+  .about-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  .about-text {
+    font-size: 1.1rem;
+    color: #555;
+  }
+  /* Services chips */
+  .chips-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .chip {
+    padding: 0.75rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  .chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  /* Different colors for chips */
+  .chip-bride {
+    background: linear-gradient(135deg, #fbcfe8, #ffe4f0);
+    color: #c0266d;
+  }
+  .chip-reception {
+    background: linear-gradient(135deg, #d1fae5, #bbf7d0);
+    color: #065f46;
+  }
+  .chip-hd {
+    background: linear-gradient(135deg, #cffafe, #a7f3d0);
+    color: #065f46;
+  }
+  .chip-airbrush {
+    background: linear-gradient(135deg, #fbcfe8, #f9a8d4);
+    color: #c0266d;
+  }
+  /* Dashboard modules */
+  .dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 2rem;
+  }
+  .dashboard-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .dashboard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+  .dashboard-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .dashboard-content {
+    flex: 1;
+  }
+  /* Timeline styles */
+  .timeline {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+  .timeline::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: #d1d5db;
+    transform: translateX(-50%);
+  }
+  .timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+  }
+  .timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+  }
+  .timeline-item:nth-child(even) {
+    left: 50%;
+    text-align: left;
+  }
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 1.5rem;
+    width: 15px;
+    height: 15px;
+    background: var(--pink);
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+  .timeline-item:nth-child(odd)::before {
+    right: -7.5px;
+  }
+  .timeline-item:nth-child(even)::before {
+    left: -7.5px;
+  }
+  /* Gallery styles */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .gallery-item {
+    background: linear-gradient(135deg, #fbcfe8, #ffe4f0);
+    border-radius: 15px;
+    padding-top: 75%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .gallery-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+  .gallery-label {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(255,255,255,0.8);
+    text-align: center;
+    font-weight: 600;
+  }
+  /* Business growth split */
+  .growth-section {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+  .growth-graphic {
+    flex: 1 1 50%;
+    min-height: 300px;
+    background: linear-gradient(135deg, #d1fae5, #bbf7d0);
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .benefits-list {
+    flex: 1 1 45%;
+  }
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .benefit-icon {
+    font-size: 1.5rem;
+    color: var(--purple);
+    flex-shrink: 0;
+  }
+  /* Client journey */
+  .journey-section {
+    background: linear-gradient(135deg, #f9e5f9, #fff7fb);
+    padding: 6rem 2rem;
+  }
+  .journey-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .journey-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1 1 150px;
+    text-align: center;
+    position: relative;
+    padding: 1rem;
+  }
+  .journey-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    width: 100px;
+    height: 2px;
+    background: #d1d5db;
+    transform: translateY(-50%);
+  }
+  .journey-icon {
+    font-size: 2rem;
+    color: var(--pink);
+    background: #fff;
+    border-radius: 50%;
+    padding: 0.75rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  /* Pricing highlight card */
+  .pricing-card {
+    max-width: 400px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .pricing-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+  .pricing-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .pricing-details {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .cta-button {
+    background: linear-gradient(135deg, var(--pink-gradient-start), var(--pink-gradient-end));
+    color: #fff;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  .cta-button:hover {
+    background: linear-gradient(135deg, var(--pink-gradient-end), var(--pink-gradient-start));
+  }
+  /* FAQ styles */
+  .faq-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+  .accordion-button {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+  .accordion-button:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  /* CTA large gradient */
+  .large-cta {
+    background: linear-gradient(135deg, var(--purple-gradient-start), var(--purple-gradient-end));
+    color: #fff;
+    padding: 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .large-cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+  .large-cta .btn {
+    margin: 0.5rem;
+  }
+  /* Footer styles */
+  footer {
+    background-color: #f9f9f9;
+    padding: 1.5rem 2rem;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  /* Utility classes */
+  .section {
+    padding: 4rem 2rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- Section 1: Hero -->
+<section class="hero-section position-relative text-center text-white overflow-hidden">
+  <div class="floating-circle" style="width: 150px; height: 150px; background: linear-gradient(135deg, #ec4899, #f9a8d4); top: -50px; left: -50px; animation-delay: 0s;"></div>
+  <div class="floating-circle" style="width: 100px; height: 100px; background: linear-gradient(135deg, #7c3aed, #d8b4fe); bottom: -30px; right: -30px; animation-delay: 3s;"></div>
+  <h1 class="hero-title mb-3">Premium Beauty Parlour Website Package</h1>
+  <p class="hero-subtitle mb-4 px-3 mx-auto" style="max-width:700px;">Create a stunning, elegant, and modern website tailored for beauty salons, makeup artists, and courses. Elevate your brand with a handcrafted theme designed for professionals.</p>
+  <div class="d-flex gap-3 justify-content-center mb-4 flex-wrap">
+    <a href="#contact" class="btn btn-gradient btn-lg px-4 py-3 shadow">Get Started</a>
+    <a href="#features" class="btn btn-outline-dark btn-lg px-4 py-3 shadow">See Features</a>
+  </div>
+  <div class="illustration mx-auto mb-5"></div>
+  <!-- Statistics bar -->
+  <div class="stats-bar bg-white py-4 shadow-sm position-relative" style="margin-top:-2rem; z-index:1;">
+    <div class="container d-flex justify-content-around flex-wrap">
+      <div class="stat-item">
+        <div class="stat-number">120+</div>
+        <div class="stat-label">Beauty Websites</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">300+</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Satisfaction</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: About the Package -->
+<section class="section-spacing bg-light" id="about">
+  <div class="container about-section">
+    <div class="about-image"></div>
+    <div class="about-content">
+      <h2 class="about-title mb-3">Beautifully Crafted Website Package</h2>
+      <p class="about-text">Our premium website template is designed with elegance, minimalism, and modern editorial style. Perfect for beauty salons, makeup artists, and beauty courses. Fully customizable, responsive, and built with the latest standards.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Services -->
+<section class="section-spacing" id="services" style="background-color:#fff7fb;">
+  <div class="container text-center mb-5">
+    <h2 class="mb-4">Services & Features</h2>
+    <p class="mb-4 text-muted">Beautiful, colorful chips highlight core services. Hover to explore each one.</p>
+    <div class="chips-container flex-wrap mx-auto" style="max-width:1200px;">
+      <div class="chip chip-bride">Bridal Makeup</div>
+      <div class="chip chip-reception">Reception</div>
+      <div class="chip chip-hd">HD Makeup</div>
+      <div class="chip chip-airbrush">Airbrush</div>
+      <div class="chip">Hair Styling</div>
+      <div class="chip">Hair Spa</div>
+      <div class="chip">Hair Colour</div>
+      <div class="chip">Facial</div>
+      <div class="chip">Cleanup</div>
+      <div class="chip">Waxing</div>
+      <div class="chip">Threading</div>
+      <div class="chip">Spa</div>
+      <div class="chip">Saree Draping</div>
+      <div class="chip">Nail Art</div>
+      <div class="chip">Skin Care</div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: Website Modules Dashboard -->
+<section class="section-spacing" id="modules" style="background-color:#fff;">
+  <div class="container mb-5">
+    <h2 class="text-center mb-4">Website Modules</h2>
+    <div class="dashboard">
+      <div class="dashboard-card">
+        <div class="dashboard-title"><i class="bi bi-calendar-check-fill me-2"></i>Appointment Booking</div>
+        <div class="dashboard-content text-muted">Seamless booking system for clients</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dashboard-title"><i class="bi bi-image-alt me-2"></i>Gallery</div>
+        <div class="dashboard-content text-muted">Showcase your work beautifully</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dashboard-title"><i class="bi bi-whatsapp me-2"></i>WhatsApp</div>
+        <div class="dashboard-content text-muted">Direct chat integration</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dashboard-title"><i class="bi bi-geo-alt-fill me-2"></i>Google Maps</div>
+        <div class="dashboard-content text-muted">Display your location</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dashboard-title"><i class="bi bi-star-fill me-2"></i>Reviews</div>
+        <div class="dashboard-content text-muted">Social proof & testimonials</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dashboard-title"><i class="bi bi-search me-2"></i>SEO</div>
+        <div class="dashboard-content text-muted">Optimize for search engines</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dashboard-title"><i class="bi bi-journal-code me-2"></i>Courses Pages</div>
+        <div class="dashboard-content text-muted">List & detail beauty courses</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dashboard-title"><i class="bi bi-tag-fill me-2"></i>Offer Banner</div>
+        <div class="dashboard-content text-muted">Highlight special offers</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dashboard-title"><i class="bi bi-envelope-fill me-2"></i>Contact Form</div>
+        <div class="dashboard-content text-muted">Easy contact & inquiry</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dashboard-title"><i class="bi bi-instagram me-2"></i>Social Media</div>
+        <div class="dashboard-content text-muted">Connect & grow</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dashboard-title"><i class="bi bi-graph-up-arrow me-2"></i>Analytics</div>
+        <div class="dashboard-content text-muted">Track visitors & performance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 5: Beauty Academy Timeline -->
+<section class="section-spacing" style="background-color:#f9e5f9;" id="academy">
+  <div class="container">
+    <h2 class="text-center mb-5">Beauty Academy Courses</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h5 class="mb-2">Professional Makeup</h5>
+        <p class="text-muted mb-0">Learn professional techniques and styles.</p>
+      </div>
+      <div class="timeline-item">
+        <h5 class="mb-2">Hair Dressing</h5>
+        <p class="text-muted mb-0">Master hair styling, cutting, and coloring.</p>
+      </div>
+      <div class="timeline-item">
+        <h5 class="mb-2">Beautician Course</h5>
+        <p class="text-muted mb-0">Comprehensive beauty therapy training.</p>
+      </div>
+      <div class="timeline-item">
+        <h5 class="mb-2">Nail Art</h5>
+        <p class="text-muted mb-0">Creative nail design & techniques.</p>
+      </div>
+      <div class="timeline-item">
+        <h5 class="mb-2">Certification</h5>
+        <p class="text-muted mb-0">Get certified and showcase your skills.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: Gallery Showcase -->
+<section class="section-spacing" id="gallery" style="background-color:#fff;">
+  <div class="container">
+    <h2 class="text-center mb-5">Gallery Showcase</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item"><div class="d-flex align-items-center justify-content-center h-100 text-center text-white fs-4 fw-semibold" style="background:linear-gradient(135deg, #fbcfe8, #ffe4f0); border-radius:15px;">Bridal Portfolio</div></div>
+      <div class="gallery-item"><div class="d-flex align-items-center justify-content-center h-100 text-center text-white fs-4 fw-semibold" style="background:linear-gradient(135deg, #d1fae5, #bbf7d0); border-radius:15px;">Hair Styling</div></div>
+      <div class="gallery-item"><div class="d-flex align-items-center justify-content-center h-100 text-center text-white fs-4 fw-semibold" style="background:linear-gradient(135deg, #cbd5e1, #e0e7ff); border-radius:15px;">Beauty Treatments</div></div>
+      <div class="gallery-item"><div class="d-flex align-items-center justify-content-center h-100 text-center text-white fs-4 fw-semibold" style="background:linear-gradient(135deg, #f9d0f0, #fde9f2); border-radius:15px;">Salon Interior</div></div>
+      <div class="gallery-item"><div class="d-flex align-items-center justify-content-center h-100 text-center text-white fs-4 fw-semibold" style="background:linear-gradient(135deg, #ffe4e6, #fbcfe8); border-radius:15px;">Customer Makeover</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 7: Business Growth -->
+<section class="section-spacing bg-light" id="growth">
+  <div class="container growth-section flex-wrap-reverse">
+    <div class="growth-graphic"></div>
+    <div class="benefits-list">
+      <h3 class="mb-4">Grow Your Business</h3>
+      <div class="benefit-item"><i class="bi bi-graph-up arrow-up benefit-icon"></i> <span>Increase Bookings</span></div>
+      <div class="benefit-item"><i class="bi bi-telephone-fill benefit-icon"></i> <span>More Calls</span></div>
+      <div class="benefit-item"><i class="bi bi-google"></i> <span>Google Visibility</span></div>
+      <div class="benefit-item"><i class="bi bi-whatsapp"></i> <span>WhatsApp Leads</span></div>
+      <div class="benefit-item"><i class="bi bi-hand-thumbs-up"></i> <span>Trust Building</span></div>
+      <div class="benefit-item"><i class="bi bi-people"></i> <span>Repeat Customers</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 8: Client Journey -->
+<section class="section-spacing" id="journey" style="background-color:#f9e5f9;">
+  <div class="container">
+    <h2 class="text-center mb-5">Client Journey</h2>
+    <div class="d-flex justify-content-center align-items-center flex-wrap journey-steps">
+      <div class="journey-step">
+        <div class="journey-icon mb-2"><i class="bi bi-globe"></i></div>
+        <div>Visit Website</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon mb-2"><i class="bi bi-gear"></i></div>
+        <div>Choose Service</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon mb-2"><i class="bi bi-calendar-check"></i></div>
+        <div>Book Appointment</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon mb-2"><i class="bi bi-whatsapp"></i></div>
+        <div>WhatsApp Confirmation</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon mb-2"><i class="bi bi-house-door"></i></div>
+        <div>Visit Parlour</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-icon mb-2"><i class="bi bi-emoji-smile"></i></div>
+        <div>Happy Customer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 9: Pricing Highlight -->
+<section class="section-spacing bg-light" id="pricing">
+  <div class="container d-flex justify-content-center">
+    <div class="pricing-card text-center">
+      <h3 class="pricing-title mb-3">All-Inclusive Website Package</h3>
+      <p class="pricing-details mb-4">Everything you need to launch your beauty business online: booking, gallery, courses, SEO, maps, reviews, and more. Fully responsive and admin friendly.</p>
+      <a href="#contact" class="btn cta-button px-4 py-2 mt-3">Request a Demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 10: FAQ -->
+<section class="section-spacing" id="faq" style="background-color:#fff;">
+  <div class="container" style="max-width:800px;">
+    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item shadow-sm rounded-3 mb-3">
+        <h2 class="accordion-header" id="questionOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answerOne" aria-expanded="false" aria-controls="answerOne">
+            Can customers book online?
+          </button>
+        </h2>
+        <div id="answerOne" class="accordion-collapse collapse" aria-labelledby="questionOne" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Yes, the website includes an integrated booking system for clients to schedule appointments easily online.</div>
+        </div>
+      </div>
+      <div class="accordion-item shadow-sm rounded-3 mb-3">
+        <h2 class="accordion-header" id="questionTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answerTwo" aria-expanded="false" aria-controls="answerTwo">
+            Can I update services?
+          </button>
+        </h2>
+        <div id="answerTwo" class="accordion-collapse collapse" aria-labelledby="questionTwo" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Absolutely. The admin panel allows you to add, edit, or remove services anytime without technical knowledge.</div>
+        </div>
+      </div>
+      <div class="accordion-item shadow-sm rounded-3 mb-3">
+        <h2 class="accordion-header" id="questionThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answerThree" aria-expanded="false" aria-controls="answerThree">
+            Can I add beauty courses?
+          </button>
+        </h2>
+        <div id="answerThree" class="accordion-collapse collapse" aria-labelledby="questionThree" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Yes, dedicated course pages are included, and you can easily add or modify courses as needed.</div>
+        </div>
+      </div>
+      <div class="accordion-item shadow-sm rounded-3 mb-3">
+        <h2 class="accordion-header" id="questionFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answerFour" aria-expanded="false" aria-controls="answerFour">
+            Can I manage offers?
+          </button>
+        </h2>
+        <div id="answerFour" class="accordion-collapse collapse" aria-labelledby="questionFour" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Yes, you can create and update promotional banners and special offers directly from the admin panel.</div>
+        </div>
+      </div>
+      <div class="accordion-item shadow-sm rounded-3 mb-3">
+        <h2 class="accordion-header" id="questionFive">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answerFive" aria-expanded="false" aria-controls="answerFive">
+            Is SEO included?
+          </button>
+        </h2>
+        <div id="answerFive" class="accordion-collapse collapse" aria-labelledby="questionFive" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Yes, the template is optimized for search engines, with meta tags, clean code, and fast loading times.</div>
+        </div>
+      </div>
+      <div class="accordion-item shadow-sm rounded-3 mb-3">
+        <h2 class="accordion-header" id="questionSix">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answerSix" aria-expanded="false" aria-controls="answerSix">
+            Can I connect WhatsApp?
+          </button>
+        </h2>
+        <div id="answerSix" class="accordion-collapse collapse" aria-labelledby="questionSix" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">Yes, you can embed WhatsApp chat links for instant communication with your clients.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 11: Premium CTA -->
+<section class="large-cta text-white text-center">
+  <h2 class="mb-4">Let's Build Your Beauty Brand Online</h2>
+  <div class="d-flex gap-3 justify-content-center flex-wrap">
+    <a href="#contact" class="btn btn-light btn-lg px-4 py-3 fw-semibold rounded-pill shadow">Request Demo</a>
+    <a href="#portfolio" class="btn btn-outline-light btn-lg px-4 py-3 fw-semibold rounded-pill shadow">View Portfolio</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center text-muted small py-3">
+  &copy; 2024 YourName. All rights reserved.
+</footer>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
